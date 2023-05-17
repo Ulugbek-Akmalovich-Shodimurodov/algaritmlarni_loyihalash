@@ -5,8 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algaritmlarni loyihalash</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<h1>salom</h1>
+<script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+<div class="box">
+    <spline-viewer url="https://prod.spline.design/PBQQBw8bfXDhBo7w/scene.splinecode" events-target="global"></spline-viewer>
+</div>
+
+<div class="card_box">
+    <h5 class="title">To'rburchak usuli</h5>
+    <h6 class="text">A B oraliqni kiriting</h6>
+    <div class="inp_box">
+        <input class="a input_n" type="number" placeholder="a">
+        <input class="b input_n" type="number" placeholder="b">
+        <button class="ok" id="ok">Submit</button>
+    </div>
+    <span class="natija text"><span>Natija</span></span>
+    <table class="tabletsiya_turt">
+        <tr>
+          <th>T/r</th>
+          <th>Natija</th>
+        </tr>
+      </table>
+</div>
+<div class="card_box">
+    <h5 class="title">Trapetsiya usuli</h5>
+    <h6 class="text">A B oraliqni kiriting</h6>
+    <div class="inp_box">
+        <input class="at input_n" type="number" placeholder="a">
+        <input class="bt input_n" type="number" placeholder="b">
+        <button class="ok" id="ok_trap">Submit</button>
+    </div>
+    <span class="natija text"><span>Natija</span></span>
+    <table class="tabletsiya_trap">
+        <tr>
+          <th>T/r</th>
+          <th>Natija</th>
+        </tr>
+      </table>
+</div>
+<div class="card_box">
+    <h5 class="title">Simson usuli</h5>
+    <h6 class="text">A B oraliqni kiriting</h6>
+    <div class="inp_box">
+        <input class="as input_n" type="number" placeholder="a">
+        <input class="bs input_n" type="number" placeholder="b">
+        <button class="ok" id="ok_simson">Submit</button>
+    </div>
+    <span class="natija text"><span>Natija</span></span>
+    <table class="tabletsiya_simson">
+        <tr>
+          <th>T/r</th>
+          <th>Natija</th>
+        </tr>
+      </table>
+</div>
+<script src="./main.js"></script>
+
+
 </body>
 </html>
