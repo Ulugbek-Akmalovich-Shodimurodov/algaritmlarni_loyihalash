@@ -20,7 +20,6 @@ Btn.addEventListener("click", (e)=>{
     let X_uzgaruvchilar = document.querySelector(".a").value.split(',')
     let Y_uzgaruvchilar = document.querySelector(".b").value.split(',')
 
-    console.log(X_uzgaruvchilar, Y_uzgaruvchilar);
 
     let sum_X = 0;
     let sum_X2 = 0;
@@ -47,7 +46,6 @@ Btn.addEventListener("click", (e)=>{
     }
         ssum_X *= ssum_X;
 
-        console.log(sum_X, sum_Y, sum_XY, sum_XX, ssum_X);
 
         let a = (X_uzgaruvchilar.length*sum_XY - sum_X*sum_Y)/(X_uzgaruvchilar.length*sum_XX - ssum_X);
         let b = (sum_Y - a*sum_X)/X_uzgaruvchilar.length;
