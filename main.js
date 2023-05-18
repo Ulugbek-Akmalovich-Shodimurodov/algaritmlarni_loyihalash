@@ -3,8 +3,7 @@ let Btn_trap = document.querySelector("#ok_trap")
 let Btn_simson = document.querySelector("#ok_simson")
 
 let Natija = document.querySelector(".natija")
-
-let ArrSum = []
+let table  = document.querySelector(".tabletsiya_turt")
 
 
 function Misol(x){
@@ -18,128 +17,83 @@ Btn.addEventListener("click", (e)=>{
     e.preventDefault();
 
 
-    let A_uzgaruvchi = document.querySelector(".a").value - 0
-    let B_uzgaruvchi = document.querySelector(".b").value - 0
-    const n = 10;
-    let h = (B_uzgaruvchi - A_uzgaruvchi)  / n;
-    let sum = 0;
+    let X_uzgaruvchilar = document.querySelector(".a").value.split(',')
+    let Y_uzgaruvchilar = document.querySelector(".b").value.split(',')
+
+    let sum_X = 0;
+    let sum_X2 = 0;
+    let sum_X3 = 0;
+    let sum_X4 = 0;
+    let sum_Y = 0;
+    let sum_XY = 0;
+    let sum_XX = 0;
+    let ssum_X = 0;
+    let sum_xxy = 0;
+
+    for (let i = 0; i < X_uzgaruvchilar.length; i++) {
+
+        sum_X += X_uzgaruvchilar[i] - 0;
+        sum_Y += Y_uzgaruvchilar[i] - 0;
+        sum_XY += 1 * X_uzgaruvchilar[i]*Y_uzgaruvchilar[i];
+        sum_XX += 1 * X_uzgaruvchilar[i]*X_uzgaruvchilar[i];
+        ssum_X += X_uzgaruvchilar[i] - 0;
+
+        sum_X4 += Math.pow(X_uzgaruvchilar[i], 4);
+        sum_X3 += Math.pow(X_uzgaruvchilar[i], 3);
+        sum_X2 += Math.pow(X_uzgaruvchilar[i], 2);
+        sum_xxy += Math.pow(X_uzgaruvchilar[i], 2)*Y_uzgaruvchilar[i];
+    }
+        ssum_X *= ssum_X;
+
+        let a = (X_uzgaruvchilar.length*sum_XY - sum_X*sum_Y)/(X_uzgaruvchilar.length*sum_XX - ssum_X);
+        let b = (sum_Y - a*sum_X)/X_uzgaruvchilar.length;
 
 
-    const table = document.querySelector(".tabletsiya_turt")
-    let k = 0;
+        let detA = sum_X4*(sum_X2*6-sum_X*sum_X) - sum_X3*(sum_X3*6-sum_X*sum_X2)+sum_X2*(sum_X*sum_X3-sum_X2*sum_X2);
+        let det_a = sum_xxy*(sum_X2*6-sum_X*sum_X)-sum_X3*(sum_XY * 6 - sum_X*sum_Y) + sum_X2*(sum_X*sum_XY-sum_Y*sum_X2);
+        let det_b = sum_X4*(sum_XY*6-sum_Y*sum_X)-sum_xxy*(sum_X3*6-sum_X*sum_X2)+sum_X2*(sum_X3*sum_Y-sum_XY*sum_X2);
+        let det_c = sum_X4*(sum_X2*sum_Y-sum_X*sum_XY)-sum_X3*(sum_X3*sum_Y-sum_XY*sum_X2)+sum_xxy*(sum_X*sum_X3-sum_X2*sum_X2);
 
-    for(let delta_X = A_uzgaruvchi; delta_X <= B_uzgaruvchi; delta_X += h){
+        let A = det_a/detA;
+        let B = det_b/detA;
+        let C = det_c/detA;
 
-
-        let nat = Misol(delta_X)
-        nat = Math.round(nat * 1000)/1000;
-        table.innerHTML += `<tr>
-                                <td>F(X<sub>${k++}</sub>)</td>
-                                <td>${nat}</td>
+                            table.innerHTML += `
+                            <tr>
+                                <td></td>
+                                <td><b>Chiziqli model:</b></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>A = ${a}</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>B = ${b}</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><b>Y = ${Math.floor(a*10000)/10000}x + ${Math.floor(b*10000)/10000}</b></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>Kvadratik model:</b></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>A = ${A}</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>B = ${B}</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>C = ${C}</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><b>Y = ${Math.floor(A*1000)/1000}x<sup>2</sup> + ${Math.floor(B*10000)/10000}x + ${Math.floor(C*10000)/10000}</b></td>
                             </tr>`
-        sum += nat
-    }
-
-    sum = Math.round(h * sum * 1000)/1000;
-    table.innerHTML += `<tr>
-                            <td>Usul natijasi:</td>
-                            <td>${sum}</td>
-                        </tr>`
 })
-
-
-
-// trapetsiya usuli
-
-Btn_trap.addEventListener("click", (e)=>{
-    e.preventDefault();
-
-
-    let A_uzgaruvchi = document.querySelector(".at").value - 0
-    let B_uzgaruvchi = document.querySelector(".bt").value - 0
-    const n = 10;
-    let h = (B_uzgaruvchi - A_uzgaruvchi)  / n;
-    let sum = 0;
-
-    const table = document.querySelector(".tabletsiya_trap")
-    let k = 0;
-
-    for(let delta_X = A_uzgaruvchi ; delta_X <= B_uzgaruvchi; delta_X += h){
-
-
-        let nat = Misol(delta_X)
-        nat = Math.round(nat * 1000)/1000;
-        table.innerHTML += `<tr>
-                                <td>F(X<sub>${k++}</sub>)</td>
-                                <td>${nat}</td>
-                            </tr>`
-        sum += nat
-    }
-    let y0 = Misol(A_uzgaruvchi)/2
-
-    let yn = Misol(B_uzgaruvchi)/2
-
-    sum = (sum + y0 + yn) * h;
-
-    sum = Math.round(sum * 1000)/1000;
-
-    table.innerHTML += `<tr>
-                            <td>Usul natijasi:</td>
-                            <td>${sum}</td>
-                        </tr>`
-})
-
-// simson usuli
-
-
-Btn_simson.addEventListener("click", (e)=>{
-    e.preventDefault();
-
-
-    let A_uzgaruvchi = document.querySelector(".as").value - 0
-    let B_uzgaruvchi = document.querySelector(".bs").value - 0
-    const n = 10;
-    let h = (B_uzgaruvchi - A_uzgaruvchi)  / n;
-    let sum = 0;
-    let toq_sum = 0;
-    let juft_sum = 0
-
-
-    const table = document.querySelector(".tabletsiya_simson")
-    let k = 0;
-
-    for(let delta_X = A_uzgaruvchi ; delta_X <= B_uzgaruvchi; delta_X += h){
-
-
-        let nat = Misol(delta_X)
-        nat = Math.round(nat * 1000)/1000;
-        table.innerHTML += `<tr>
-                                <td>F(X<sub>${k++}</sub>)</td>
-                                <td>${nat}</td>
-                            </tr>`
-        sum += nat
-        ArrSum.push(nat);
-    }
-    for(let i = 1; i < n; i += 2){
-        toq_sum += ArrSum[i];
-        juft_sum += ArrSum[i + 1];
-    }
-    let y0 = Misol(A_uzgaruvchi)
-
-    let yn = Misol(B_uzgaruvchi)
-    sum = (h/3 )* (y0 + yn + 4*toq_sum + 2 * (juft_sum - ArrSum[n]));
-
-    sum = Math.round(sum * 1000)/1000;
-
-    table.innerHTML += `<tr>
-                            <td>Usul natijasi:</td>
-                            <td>${sum}</td>
-                        </tr>`
-})
-
-
-
-// 2-topshiriq misollari
-
-// C++ da
 
