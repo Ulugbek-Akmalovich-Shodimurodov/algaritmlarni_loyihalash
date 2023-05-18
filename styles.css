@@ -61,8 +61,13 @@ body{
     display: flex;
     gap: 10px;
 }
+.input_box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 .input_n, .ok{
-    width: 50px;
+    width: 120px;
     display: block;
 
     border: none;
