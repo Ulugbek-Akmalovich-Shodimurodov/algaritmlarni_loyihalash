@@ -73,7 +73,7 @@ Btn.addEventListener("click", (e)=>{
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td><b>Y = ${Math.floor(a*10000)/10000}x + ${Math.floor(b*10000)/10000}</b></td>
+                                <td><b>Y = ${Math.floor(a*10000)/10000}x ${b > 0 ? " + " : ' '}${Math.floor(b*10000)/10000}</b></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -93,7 +93,7 @@ Btn.addEventListener("click", (e)=>{
                             </tr>
                             <tr>
                                 <td>7</td>
-                                <td><b>Y = ${Math.floor(A*1000)/1000}x<sup>2</sup> + ${Math.floor(B*10000)/10000}x + ${Math.floor(C*10000)/10000}</b></td>
+                                <td><b>Y = ${Math.floor(A*1000)/1000}x<sup>2</sup>${B > 0 ? " + " : ' '} ${Math.floor(B*10000)/10000}x${C > 0 ? " + " : ' '}${Math.floor(C*1000)/1000}</b></td>
                             </tr>`
 })
 
